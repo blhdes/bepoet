@@ -1,98 +1,73 @@
-# Poetry Generator
-
-An elegant and simple iOS app that helps users compose haiku (and eventually other poetic forms) by providing structural guidance, educational context, and a beautiful writing interface - without generating content for them.
+# Poetry Generator (iOS)
 
 ## Vision
 
-To be a tool that educates and guides users in writing poetry themselves, fostering creativity and learning through constraint-based assistance.
+A native iOS poetry app that helps you become a better poet. No AI, no generators — just structured guidance, real-time feedback, and progressive learning. You are the poet.
 
-## Current Focus (MVP)
+## Current State
 
-- Haiku composition with 5-7-5 syllable guidance
-- Real-time syllable counting and validation
-- Theme and mood selection for inspiration
-- Educational tooltips about haiku principles
-- Export/share haiku as text or image
-- Save and revisit favorite haiku
+**MVP Phase 1:** Haiku composer with progressive form support.
+
+- Syllable counting with CMU Pronouncing Dictionary accuracy
+- Centered, minimalist writing interface designed for concentration
+- Real-time syllable feedback per line (no colored borders, no checkmarks)
+- Educational guidance for each poetic form
+- Save, export, and manage your collection
+
+**Planned Forms (progressive difficulty):**
+1. **Haiku** (5·7·5) — Japanese tradition — Difficulty: 1
+2. **Tanka** (5·7·5·7·7) — Japanese court poetry — Difficulty: 2
+3. **Cinquain** (2·4·6·8·2) — Adelaide Crapsey — Difficulty: 3
+4. **Limerick** (8·8·5·5·8) — English/Irish folk — Difficulty: 3
+5. **Sonnet** (14×10) — Italian/English tradition — Difficulty: 5
 
 ## Project Structure
 
-```
 PoetryGenerator/
-├── Models/
-│   └── Haiku.swift
-├── Views/
-│   ├── ContentView.swift
-│   ├── HaikuComposerView.swift
-│   ├── ExportView.swift
-│   └── SavedHaikusView.swift
-├── ViewModels/
-│   └── HaikuViewModel.swift
-├── Utilities/
-│   ├── SyllableCounter.swift
-│   └── HaikuStorage.swift
-└── Resources/
-    (Assets, etc. to be added)
-```
 
-## Features in Detail
+| Directory | Purpose |
+|-----------|---------|
+| `Models/` | Data models (`Haiku`, `PoeticForm`) |
+| `ViewModels/` | View state managers (`ComposerViewModel`) |
+| `Views/` | SwiftUI views (`ComposerView`, `SavedHaikusView`, `ExportView`) |
+| `Utilities/` | Tools (`SyllableCounter`, `HaikuStorage`, tests) |
+| `Resources/` | Bundled assets (CMU Pronouncing Dictionary) |
 
-### Haiku Composer
-- Three-line input with real-time syllable counting (targets: 5, 7, 5)
-- Visual feedback (green/red) for syllable count validity
-- Optional theme and mood input for inspiration
-- Educational disclosure group with haiku guidelines
+## Features
 
-### Export & Sharing
-- Share as beautifully typeset image (via `UIActivityViewController`)
-- Copy as text to clipboard
-- Export options for image sharing
+### Composer View
+- Clean, centered text fields for each line
+- Small syllable counter below each line (shows target when empty, actual count when typing)
+- Form name + subtitle header at the top
+- Educational guidance section at the bottom
+- Info button to learn about the current form
 
 ### Saved Haikus
-- Persistent storage using `UserDefaults` (via `HaikuStorage` singleton)
-- View, edit (by reopening in composer), and delete saved haikus
-- Timestamped for chronological viewing
+- View your collected haikus in a clean list
+- Delete individual haikus with swipe-to-remove
+- Theme and mood tags shown when available
 
-## Technical Implementation
+### Export
+- Copy haiku as text to clipboard
+- Share as a formatted image via system share sheet
 
-### Syllable Counting
-- Uses a simple vowel-group heuristic (with silent 'e' removal) for English words
-- Can be improved with a pronunciation dictionary (like CMU) for greater accuracy
-- Updates in real-time as user types (with debouncing)
+## Setup
 
-### Data Persistence
-- `HaikuStorage` class handles saving/loading array of `Haiku` structs to `UserDefaults`
-- `Haiku` model is `Codable` for easy JSON serialization
+See [Setup.md](Setup.md) for detailed instructions on building and testing in Xcode.
 
-### SwiftUI
-- MVVM-like architecture with `HaikuViewModel` managing form state and validation
-- Reusable `HaikuLineView` for each line of the haiku
-- Modular sheets for theme/mood selection, export, and saved haikus list
+**Quick version:**
+1. Clone: `git clone git@github.com:blhdes/bepoet.git`
+2. Create an Xcode iOS project in the PoetryGenerator directory
+3. Add source files to the target
+4. Build and run on iPhone Simulator or physical device
 
-## Next Steps
+## Tech Stack
 
-1. **Refine syllable counting**: Integrate a more accurate dictionary-based approach.
-2. **Add more poetic forms**: After haiku is solid, implement tanka, cinquain, etc.
-3. **Enhance UI/UX**: 
-   - Animated feedback when line is valid/invalid
-   - Seasonal word (kigo) suggestions
-   - Cutting word (kireji) examples for English haiku
-4. **Localization**: Support multiple languages (starting with Spanish and Japanese).
-5. **Community features**: Optional anonymous sharing of haiku for inspiration.
-6. **Challenges & prompts**: Daily haiku themes or writing exercises.
+- SwiftUI (iOS 17+)
+- Combine for reactive syllable counting
+- CMU Pronouncing Dictionary for accurate syllable counting
+- UserDefaults for persistence (placeholder — SwiftData planned for later)
 
-## Dependencies
+## License
 
-- Swift 5.5+
-- iOS 15.0+
-- No third-party dependencies (uses only SwiftUI and Foundation)
-
-## Notes for Development
-
-- This project was started in a Linux environment where Swift is not available for compilation.
-- To build and run, open the `PoetryGenerator` directory in Xcode on a Mac.
-- The code is written to be compatible with SwiftUI's lifecycle and data flow.
-
-## Tags
-
-#ios #swiftui #poetry #haiku #mvp #educational-app #creative-writing
+Private project. All rights reserved.
