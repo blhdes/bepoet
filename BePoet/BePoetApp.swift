@@ -1,7 +1,7 @@
 import SwiftUI
 
 @main
-struct PoetryGeneratorApp: App {
+struct BePoetApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()

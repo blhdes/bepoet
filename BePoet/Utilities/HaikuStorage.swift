@@ -1,4 +1,5 @@
 import Foundation
+import SwiftUI
 
 class HaikuStorage {
     static let shared = HaikuStorage()

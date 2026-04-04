@@ -124,7 +124,7 @@ struct ComposerLineView: View {
                 .font(.body)
                 .multilineTextAlignment(.center)
                 .disableAutocorrection(true)
-                .autocapitalization(.never)
+                .textInputAutocapitalization(.never)
                 .submitLabel(.next)
                 .lineLimit(1)
                 .background(Color.clear)
@@ -134,7 +134,7 @@ struct ComposerLineView: View {
                 if text.isEmpty {
                     Text("\(target) syllables")
                         .font(.caption2.monospacedDigit())
-                        .foregroundColor(.tertiary)
+                        .foregroundStyle(.tertiary)
                 } else {
                     Text("\(syllableCount)")
                         .font(.caption.monospacedDigit())
@@ -142,10 +142,10 @@ struct ComposerLineView: View {
                         .foregroundColor(isValid ? .secondary : .red)
                     Text("/")
                         .font(.caption2)
-                        .foregroundColor(.tertiary)
+                        .foregroundStyle(.tertiary)
                     Text("\(target)")
                         .font(.caption.monospacedDigit())
-                        .foregroundColor(.tertiary)
+                        .foregroundStyle(.tertiary)
                 }
             }
         }

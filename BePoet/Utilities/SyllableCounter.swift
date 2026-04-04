@@ -42,7 +42,7 @@ struct SyllableCounter {
     }()
     
     /// Count syllables using CMU dictionary with heuristic fallback
-    static func countSyllables(in word: String) -> Int {
+    private static func countSyllablesInWord(_ word: String) -> Int {
         let cleaned = word.lowercased()
             .trimmingCharacters(in: .punctuationCharacters)
             .components(separatedBy: .whitespaces)
@@ -90,6 +90,6 @@ struct SyllableCounter {
     /// Count syllables in a full line
     static func countSyllables(in line: String) -> Int {
         let words = line.components(separatedBy: .whitespacesAndNewlines)
-        return words.reduce(0) { $0 + countSyllables(in: $1) }
+        return words.reduce(0) { $0 + countSyllablesInWord($1) }
     }
 }

@@ -66,7 +66,7 @@ struct PoeticForm: Identifiable, Codable, Equatable {
         origin: "Italian / English tradition"
     )
 
-    static let progressiveForms: [PoeticForm] {
+    static var progressiveForms: [PoeticForm] {
         [haiku, tanka, cinquain, limerick, sonnet].sorted { $0.difficulty < $1.difficulty }
     }
 }

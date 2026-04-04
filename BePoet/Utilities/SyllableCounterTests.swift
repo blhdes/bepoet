@@ -124,5 +124,4 @@ func testSyllableCounter() {
     }
 }
 
-// Run the test
-testSyllableCounter()
+// Call testSyllableCounter() from a button or unit test runner — top-level calls are not allowed in Swift app targets.

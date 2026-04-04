@@ -1,4 +1,4 @@
-# Poetry Generator (iOS)
+# BePoet (iOS)
 
 ## Vision
 
@@ -23,15 +23,17 @@ A native iOS poetry app that helps you become a better poet. No AI, no generator
 
 ## Project Structure
 
-PoetryGenerator/
-
-| Directory | Purpose |
-|-----------|---------|
-| `Models/` | Data models (`Haiku`, `PoeticForm`) |
-| `ViewModels/` | View state managers (`ComposerViewModel`) |
-| `Views/` | SwiftUI views (`ComposerView`, `SavedHaikusView`, `ExportView`) |
-| `Utilities/` | Tools (`SyllableCounter`, `HaikuStorage`, tests) |
-| `Resources/` | Bundled assets (CMU Pronouncing Dictionary) |
+```
+BePoet.xcodeproj
+BePoet/
+├── BePoetApp.swift
+├── Assets.xcassets/
+├── Models/           — data models (Haiku, PoeticForm)
+├── ViewModels/       — view state (ComposerViewModel)
+├── Views/            — SwiftUI views (ComposerView, SavedHaikusView, ExportView)
+├── Utilities/        — tools (SyllableCounter, HaikuStorage)
+└── Resources/        — bundled assets (CMU Pronouncing Dictionary)
+```
 
 ## Features
 
@@ -53,20 +55,16 @@ PoetryGenerator/
 
 ## Setup
 
-See [Setup.md](Setup.md) for detailed instructions on building and testing in Xcode.
-
-**Quick version:**
 1. Clone: `git clone git@github.com:blhdes/bepoet.git`
-2. Create an Xcode iOS project in the PoetryGenerator directory
-3. Add source files to the target
-4. Build and run on iPhone Simulator or physical device
+2. Open `BePoet.xcodeproj` in Xcode
+3. Select a simulator and press `Cmd+R`
 
 ## Tech Stack
 
 - SwiftUI (iOS 17+)
 - Combine for reactive syllable counting
 - CMU Pronouncing Dictionary for accurate syllable counting
-- UserDefaults for persistence (placeholder — SwiftData planned for later)
+- UserDefaults for persistence (SwiftData planned for later)
 
 ## License
 
